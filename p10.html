@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .form-container {
+            max-width: 300px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .error {
+            color: red;
+            font-size: 12px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Login Form</h2>
+        <form id="loginForm">
+            <label for="username">Username (5-15 characters):</label>
+            <input type="text" id="username" name="username" required>
+            <div id="usernameError" class="error">Username must be between 5 and 15 characters.</div>
+            
+            <label for="password">Password (8-20 characters):</label>
+            <input type="password" id="password" name="password" required>
+            <div id="passwordError" class="error">Password must be between 8 and 20 characters.</div>
+            
+            <button type="submit" class="btn">Login</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent form submission for demo purposes
+
+            // Get input values
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            
+            // Clear previous error messages
+            document.getElementById('usernameError').style.display = 'none';
+            document.getElementById('passwordError').style.display = 'none';
+
+            // Check username length
+            if (username.length < 5 || username.length > 15) {
+                document.getElementById('usernameError').style.display = 'block';
+            }
+
+            // Check password length
+            if (password.length < 8 || password.length > 20) {
+                document.getElementById('passwordError').style.display = 'block';
+            }
+
+            // If both are valid, show success message (for demo purposes)
+            if (username.length >= 5 && username.length <= 15 && password.length >= 8 && password.length <= 20) {
+                alert("Login successful!");
+            }
+        });
+    </script>
+</body>
+</html>
